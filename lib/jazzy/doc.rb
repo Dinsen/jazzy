@@ -14,7 +14,7 @@ module Jazzy
       config = Config.instance
       copyright = config.copyright || (
         # Fake date is used to keep integration tests consistent
-        date = ENV['JAZZY_FAKE_DATE'] || DateTime.now.strftime('%Y-%m-%d')
+        date = ENV['JAZZY_FAKE_DATE'] || 'git show -s --format=%ci HEAD'.chomp
         year = date[0..3]
         "&copy; #{year} [#{config.author_name}](#{config.author_url}). " \
         "All rights reserved. (Last updated: #{date})"
